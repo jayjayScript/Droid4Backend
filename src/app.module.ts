@@ -7,14 +7,18 @@ import { SeedModule } from './seed/seed.module';
 import { ProfileModule } from './profile/profile.module';
 import { config } from 'dotenv';
 import { TransactionModule } from './transaction/transaction.module';
+import { AuthModule } from './admin/auth/auth.module';
+import { JwtSharedModule } from './common/jwt/jwt.module';
 config()
 
 @Module({
   imports: [
-    ConfigModule.forRoot(), // ✅ Load .env
-    MongooseModule.forRoot(process.env.MONGODB_URI || ''), SeedModule, ProfileModule, TransactionModule,
+    ConfigModule.forRoot({ isGlobal: true }), // ✅ Load .env
+    MongooseModule.forRoot(process.env.MONGODB_URI || ''),
+    JwtSharedModule,
+    SeedModule, ProfileModule, TransactionModule, AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
