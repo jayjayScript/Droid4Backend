@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { CreateProfileDto } from './dto/create-profile.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
 import { Model } from 'mongoose';
-import { User, UserDocument } from '../schema/user.schema'; // ✅ correct model
+import { User, UserDocument } from '../common/schema/user.schema'; // ✅ correct model
 import { JwtService } from '@nestjs/jwt';
 
 @Injectable()

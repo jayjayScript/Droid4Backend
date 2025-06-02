@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Req } from '@nestjs/common';
 import { TransactionService } from './transaction.service';
 import { SendDTO, RecieveDTO } from './dto/create-transaction.dto';
-import { JwtAuthGuard } from 'src/jwt/jwt-auth.guard';
+import { JwtAuthGuard } from 'src/common/jwt/jwt-auth.guard';
 
 @UseGuards(JwtAuthGuard)
 @Controller('transaction')

@@ -1,10 +1,10 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-export type TransactionDocument = Transaction & Document;
+export type UserTransactionDocument = UserTransaction & Document;
 
 @Schema({ timestamps: true })
-export class Transaction {
+export class UserTransaction {
   @Prop({ type: String, ref: 'user', required: true })
   email: string;
 
@@ -27,4 +27,4 @@ export class Transaction {
   completedAt?: Date;
 }
 
-export const TransactionSchema = SchemaFactory.createForClass(Transaction);
+export const UserTransactionSchema = SchemaFactory.createForClass(UserTransaction);

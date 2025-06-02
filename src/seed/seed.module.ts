@@ -4,7 +4,7 @@ import { SeedService } from './seed.service';
 import { SeedController } from './seed.controller';
 import { JwtModule } from '@nestjs/jwt';
 import { config } from 'dotenv';
-import { UserModule } from 'src/schema/user.module';
+import { UserModule } from 'src/common/schema/user.module';
 config()
 
 

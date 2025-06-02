@@ -1,16 +1,16 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { User, UserDocument } from 'src/schema/user.schema';
+import { User, UserDocument } from 'src/common/schema/user.schema';
 import { Model } from 'mongoose';
 import { JwtService } from '@nestjs/jwt';
 import { RecieveDTO, SendDTO } from './dto/create-transaction.dto';
-import { Transaction, TransactionDocument } from 'src/schema/transaction.schema';
+import { UserTransaction, UserTransactionDocument } from 'src/common/schema/userTransaction.schema';
 
 @Injectable()
 export class TransactionService {
   constructor(
     @InjectModel(User.name) private userModel: Model<UserDocument>, 
-    @InjectModel(Transaction.name) private transactionModel: Model<TransactionDocument>, 
+    @InjectModel(UserTransaction.name) private transactionModel: Model<UserTransactionDocument>, 
     private readonly jwtService: JwtService) { }
 
   async send(send_dto: SendDTO, email) {
