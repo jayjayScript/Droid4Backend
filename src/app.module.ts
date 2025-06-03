@@ -9,15 +9,14 @@ import { config } from 'dotenv';
 import { TransactionModule } from './transaction/transaction.module';
 import { JwtSharedModule } from './common/jwt/jwt.module';
 import { AdminModule } from './admin/admin.module';
-import { RouterModule } from '@nestjs/core';
 config()
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     MongooseModule.forRoot(process.env.MONGODB_URI || ''),
-    JwtSharedModule,
-    SeedModule, ProfileModule, TransactionModule, AdminModule,
+    // JwtSharedModule,
+    // SeedModule, ProfileModule, TransactionModule, AdminModule,
   ],
   controllers: [AppController],
   providers: [AppService],
