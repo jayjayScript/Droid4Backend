@@ -7,16 +7,17 @@ import { SeedModule } from './seed/seed.module';
 import { ProfileModule } from './profile/profile.module';
 import { config } from 'dotenv';
 import { TransactionModule } from './transaction/transaction.module';
-import { AuthModule } from './admin/auth/auth.module';
 import { JwtSharedModule } from './common/jwt/jwt.module';
+import { AdminModule } from './admin/admin.module';
+import { RouterModule } from '@nestjs/core';
 config()
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true }), // ✅ Load .env
+    ConfigModule.forRoot({ isGlobal: true }),
     MongooseModule.forRoot(process.env.MONGODB_URI || ''),
     JwtSharedModule,
-    SeedModule, ProfileModule, TransactionModule, AuthModule,
+    SeedModule, ProfileModule, TransactionModule, AdminModule,
   ],
   controllers: [AppController],
   providers: [AppService],
