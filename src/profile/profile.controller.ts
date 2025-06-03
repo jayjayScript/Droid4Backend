@@ -11,4 +11,6 @@ export class ProfileController {
   getProfile(@Req() req) {
     return this.profileService.getUserProfile(req.user)
   }
+
+  
 }

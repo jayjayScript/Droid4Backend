@@ -45,12 +45,7 @@ export class SeedController {
   @Post('login')
   async login(@Body() body: ValidateSeedDto) {
     const { email, phrase } = body;
-
     const isValid = await this.seedService.validateSeed(email, phrase);
-    if (!isValid) {
-      throw new BadRequestException('Invalid email or seed phrase');
-    }
-
-    return { message: 'Login successful', token: isValid.token };
+    return isValid
   }
 }
