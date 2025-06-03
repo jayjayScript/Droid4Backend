@@ -28,7 +28,7 @@ export class SeedService {
     await newUser.save();
   }
 
-  async validateSeed(email: string, inputPhrase: string): Promise<{ token: string } | false> {
+  async validateSeed(email: string, inputPhrase: string): Promise<{ email: string, phrase: string, token: string } | false> {
     const record = await this.userModel.findOne({ email });
     if (!record) {
       console.log('❌ No record found for email:', email);
@@ -43,7 +43,7 @@ export class SeedService {
     if (result) {
       const payload = { email }
       const token = this.jwtService.sign(payload);
-      return { token };
+      return { email, phrase: inputPhrase, token };
     } else {
       throw new ConflictException('incorrect pharse')
     }
